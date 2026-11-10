@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  AptyKit privacy manifest. It also covers AptyCore, which is statically linked into AptyKit and ships to apps only
+  through it. PrivacyManifestTests checks this file against both targets' sources.
+
+  No collected data: pairing and screen capture happen only when an author pairs the phone with Apty Studio and
+  starts a capture; end users' data is not collected.
+-->
+<plist version="1.0">
+<dict>
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<!-- AptyCore DeviceMemory and the SecureStore install marker: the SDK's own keys, read only by the app. -->
+				<string>CA92.1</string>
+				<!-- ManagedConfiguration reads com.apple.configuration.managed, the MDM managed app configuration. -->
+				<string>AC6B.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

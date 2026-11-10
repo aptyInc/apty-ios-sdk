@@ -1,0 +1,152 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:12d2525e-bb98-4487-aef8-95a2cd50ca94",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-10T11:42:24.523Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "sbom.mjs",
+          "supplier": {
+            "name": "Apty"
+          }
+        }
+      ]
+    },
+    "component": {
+      "type": "file",
+      "bom-ref": "AptyKit.xcframework.zip",
+      "name": "AptyKit.xcframework.zip",
+      "version": "1.0.0",
+      "purl": "pkg:generic/apty/AptyKit.xcframework.zip@1.0.0",
+      "supplier": {
+        "name": "Apty"
+      },
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f98e4b024d220cb052b78df51dbca503a2a419bf7af55c13150c0fff3413a4d"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "framework",
+      "bom-ref": "AptyKit",
+      "name": "AptyKit",
+      "version": "1.0.0",
+      "purl": "pkg:generic/apty/AptyKit@1.0.0",
+      "supplier": {
+        "name": "Apty"
+      },
+      "description": "Apty native iOS SDK (XCFramework, AptyCore linked in statically)",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f98e4b024d220cb052b78df51dbca503a2a419bf7af55c13150c0fff3413a4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "apty:slice",
+          "value": "ios-arm64"
+        },
+        {
+          "name": "apty:slice",
+          "value": "ios-arm64_x86_64-simulator"
+        }
+      ],
+      "components": [
+        {
+          "type": "file",
+          "bom-ref": "AptyKit/ios-arm64",
+          "name": "AptyKit.xcframework/ios-arm64/AptyKit.framework/AptyKit",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4c44d7d7da6bd77b7ea1bb382b246b48fbfddb410e40c9908231df3ea65526d5"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "AptyKit/ios-arm64_x86_64-simulator",
+          "name": "AptyKit.xcframework/ios-arm64_x86_64-simulator/AptyKit.framework/AptyKit",
+          "version": "1.0.0",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ebbc1f086690c2c0768aeb45f4b1509aa73b553bb5ecb7459aff6a357ece03fb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "AptyCore",
+      "name": "AptyCore",
+      "version": "1.0.0",
+      "purl": "pkg:generic/apty/AptyCore@1.0.0",
+      "supplier": {
+        "name": "Apty"
+      },
+      "description": "Screen capture library. Statically included in AptyKit: its code is inside each AptyKit.framework/AptyKit slice binary (hashed under AptyKit), so it has no file or hash of its own.",
+      "properties": [
+        {
+          "name": "apty:linkage",
+          "value": "static"
+        },
+        {
+          "name": "apty:includedIn",
+          "value": "AptyKit"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "runtime-native.js",
+      "name": "runtime-native.js",
+      "version": "1.0.0",
+      "purl": "pkg:generic/apty/runtime-native.js@1.0.0",
+      "supplier": {
+        "name": "Apty"
+      },
+      "description": "Embedded TypeScript runtime, at the root of every AptyKit.framework slice",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37fa67f2a2629c547aafdc5d50340b84dc236780654e5ec1ff8f41f968b7d94d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "AptyKit.xcframework.zip",
+      "dependsOn": [
+        "AptyKit"
+      ]
+    },
+    {
+      "ref": "AptyKit",
+      "dependsOn": [
+        "AptyCore",
+        "runtime-native.js"
+      ]
+    },
+    {
+      "ref": "AptyCore",
+      "dependsOn": []
+    },
+    {
+      "ref": "runtime-native.js",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios17.0 -enable-objc-interop -enable-library-evolution -swift-version 6 -O -enable-experimental-feature DebugDescriptionMacro -module-name AptyKit -package-name sdk_ios
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
+import CoreGraphics
+import Foundation
+import Foundation/*.Bundle*/
+import Foundation/*.ProcessInfo*/
+import Foundation/*.URL*/
+import JavaScriptCore
+import Security
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+public enum Apty {
+  public struct Options : Swift.Sendable {
+    public var runtimeUpdates: Swift.Bool
+    public var launcher: Swift.Bool
+    public var environmentId: Swift.String?
+    public var managedConfiguration: Swift.Bool
+    public init()
+  }
+  public static let version: Swift.String
+  @_Concurrency.MainActor public static func start(tenantId: Swift.String, applicationId: Swift.String, contentURL: Foundation.URL, serverURL: Foundation.URL, options: AptyKit.Apty.Options = .init())
+  @_Concurrency.MainActor public static func handle(_ url: Foundation.URL) -> Swift.Bool
+  @_Concurrency.MainActor public static func stop()
+  @discardableResult
+  @_Concurrency.MainActor public static func identify(id: Swift.String, email: Swift.String? = nil, attributes: [Swift.String : Swift.String] = [:]) -> Swift.Bool
+  @_Concurrency.MainActor public static func reset()
+}
+public struct AptyConfigureLink : Swift.Equatable, Swift.Sendable {
+  public let tenantId: Swift.String
+  public let applicationId: Swift.String
+  public let contentURL: Foundation.URL
+  public let serverURL: Foundation.URL
+  public let applicationName: Swift.String?
+  public static func == (a: AptyKit.AptyConfigureLink, b: AptyKit.AptyConfigureLink) -> Swift.Bool
+}
+extension AptyKit.Apty {
+  public static func configureLink(from url: Foundation.URL, expectedScheme: Swift.String? = nil) -> AptyKit.AptyConfigureLink?
+}
+public enum ManagedConfigurationKey : Swift.String, Swift.CaseIterable {
+  case tenantId
+  case applicationId
+  case contentURL
+  case serverURL
+  case runtimeUpdates
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AptyKit.ManagedConfigurationKey]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [AptyKit.ManagedConfigurationKey] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension AptyKit.ManagedConfigurationKey : Swift.Equatable {}
+extension AptyKit.ManagedConfigurationKey : Swift.Hashable {}
+extension AptyKit.ManagedConfigurationKey : Swift.RawRepresentable {}
