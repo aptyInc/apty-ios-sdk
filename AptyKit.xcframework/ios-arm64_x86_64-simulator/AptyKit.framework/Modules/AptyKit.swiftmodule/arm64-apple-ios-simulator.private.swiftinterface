@@ -18,7 +18,7 @@ import os
 public enum Apty {
   public struct Options : Swift.Sendable {
     public var runtimeUpdates: Swift.Bool
-    public var launcher: Swift.Bool
+    public var widget: Swift.Bool
     public var environmentId: Swift.String?
     public var managedConfiguration: Swift.Bool
     public init()
