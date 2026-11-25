@@ -8,6 +8,7 @@ import Foundation
 import Foundation/*.Bundle*/
 import Foundation/*.ProcessInfo*/
 import Foundation/*.URL*/
+import ImageIO
 import JavaScriptCore
 import Security
 import Swift
